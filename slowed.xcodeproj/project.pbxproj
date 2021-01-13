@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		291B121525AF98ED001C5C30 /* SlowedAudioEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291B121425AF98ED001C5C30 /* SlowedAudioEngine.swift */; };
+		291B121B25AF99E0001C5C30 /* AudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 291B121A25AF99E0001C5C30 /* AudioKit */; };
 		29F779F425AF8C9F00A50781 /* slowedApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F779F325AF8C9F00A50781 /* slowedApp.swift */; };
 		29F779F625AF8C9F00A50781 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F779F525AF8C9F00A50781 /* ContentView.swift */; };
 		29F779F825AF8C9F00A50781 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29F779F725AF8C9F00A50781 /* Assets.xcassets */; };
@@ -33,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		291B121425AF98ED001C5C30 /* SlowedAudioEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlowedAudioEngine.swift; sourceTree = "<group>"; };
 		29F779F025AF8C9F00A50781 /* slowed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = slowed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29F779F325AF8C9F00A50781 /* slowedApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = slowedApp.swift; sourceTree = "<group>"; };
 		29F779F525AF8C9F00A50781 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				291B121B25AF99E0001C5C30 /* AudioKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +106,7 @@
 				29F779FC25AF8C9F00A50781 /* Info.plist */,
 				29F779FD25AF8C9F00A50781 /* slowed.entitlements */,
 				29F779F925AF8C9F00A50781 /* Preview Content */,
+				291B121425AF98ED001C5C30 /* SlowedAudioEngine.swift */,
 			);
 			path = slowed;
 			sourceTree = "<group>";
@@ -148,6 +153,9 @@
 			dependencies = (
 			);
 			name = slowed;
+			packageProductDependencies = (
+				291B121A25AF99E0001C5C30 /* AudioKit */,
+			);
 			productName = slowed;
 			productReference = 29F779F025AF8C9F00A50781 /* slowed.app */;
 			productType = "com.apple.product-type.application";
@@ -219,6 +227,9 @@
 				Base,
 			);
 			mainGroup = 29F779E725AF8C9E00A50781;
+			packageReferences = (
+				291B121925AF99E0001C5C30 /* XCRemoteSwiftPackageReference "AudioKit" */,
+			);
 			productRefGroup = 29F779F125AF8C9F00A50781 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -262,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				29F779F625AF8C9F00A50781 /* ContentView.swift in Sources */,
+				291B121525AF98ED001C5C30 /* SlowedAudioEngine.swift in Sources */,
 				29F779F425AF8C9F00A50781 /* slowedApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -585,6 +597,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		291B121925AF99E0001C5C30 /* XCRemoteSwiftPackageReference "AudioKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/AudioKit";
+			requirement = {
+				branch = "v5-main";
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		291B121A25AF99E0001C5C30 /* AudioKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 291B121925AF99E0001C5C30 /* XCRemoteSwiftPackageReference "AudioKit" */;
+			productName = AudioKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 29F779E825AF8C9E00A50781 /* Project object */;
 }
