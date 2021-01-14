@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		291B121525AF98ED001C5C30 /* SlowedAudioEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291B121425AF98ED001C5C30 /* SlowedAudioEngine.swift */; };
 		291B121B25AF99E0001C5C30 /* AudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 291B121A25AF99E0001C5C30 /* AudioKit */; };
+		293FD8BD25AFCB4700D7A8D3 /* PlayerControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293FD8BC25AFCB4700D7A8D3 /* PlayerControls.swift */; };
 		29F779F425AF8C9F00A50781 /* slowedApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F779F325AF8C9F00A50781 /* slowedApp.swift */; };
 		29F779F625AF8C9F00A50781 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F779F525AF8C9F00A50781 /* ContentView.swift */; };
 		29F779F825AF8C9F00A50781 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29F779F725AF8C9F00A50781 /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		291B121425AF98ED001C5C30 /* SlowedAudioEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlowedAudioEngine.swift; sourceTree = "<group>"; };
+		293FD8BC25AFCB4700D7A8D3 /* PlayerControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControls.swift; sourceTree = "<group>"; };
 		29F779F025AF8C9F00A50781 /* slowed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = slowed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29F779F325AF8C9F00A50781 /* slowedApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = slowedApp.swift; sourceTree = "<group>"; };
 		29F779F525AF8C9F00A50781 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				29F779FD25AF8C9F00A50781 /* slowed.entitlements */,
 				29F779F925AF8C9F00A50781 /* Preview Content */,
 				291B121425AF98ED001C5C30 /* SlowedAudioEngine.swift */,
+				293FD8BC25AFCB4700D7A8D3 /* PlayerControls.swift */,
 			);
 			path = slowed;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				293FD8BD25AFCB4700D7A8D3 /* PlayerControls.swift in Sources */,
 				29F779F625AF8C9F00A50781 /* ContentView.swift in Sources */,
 				291B121525AF98ED001C5C30 /* SlowedAudioEngine.swift in Sources */,
 				29F779F425AF8C9F00A50781 /* slowedApp.swift in Sources */,

@@ -7,35 +7,26 @@
 
 import AudioKit
 import AVFoundation
+import SwiftUI
 
-class SlowedAudioEngine {
+class SlowedAudioEngine: ProcessesPlayerInput {
+    var player: AudioPlayer
+    
     var engine: AudioEngine!;
-    var player: AudioPlayer!
     var reverb: Reverb!
     var playbackSpeed: VariSpeed!
-    var audioFile: AVAudioFile!;
+    var fileUrl: URL?;
     
-    init(filename: String) {
+    init() {
         engine = AudioEngine()
-        
-        do {
-            audioFile = try AVAudioFile(forReading: URL(fileURLWithPath: filename))
-        } catch {
-            print("Failed to load \(filename)")
-            return
-        }
-        
-        player = AudioPlayer(file: audioFile)
+        player = AudioPlayer()
         
         playbackSpeed = VariSpeed(buildEffectChain())
         playbackSpeed.rate = 0.9
-    
+
         engine.output = playbackSpeed
-        do {
-            try engine.start()
-        } catch{
-            print("Failed to start AKManager")
-        }
+        
+        try! engine.start()
     }
     
     private func buildEffectChain() -> Node {
@@ -43,5 +34,26 @@ class SlowedAudioEngine {
         reverb.dryWetMix = 0.3
         
         return reverb
+    }
+
+    func start() {
+        player.play()
+        
+    }
+    
+    func stop() {
+        player.stop()
+        engine.stop()
+    }
+    
+    func load(path: URL) {
+        player.stop()
+        print("file loaded: \(path)")
+        
+        let url = path
+        let file = try! AVAudioFile(forReading: url)
+
+        player.file = file
+        player.schedule(at: nil)
     }
 }
