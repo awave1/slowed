@@ -26,19 +26,26 @@ class SlowedAudioEngine: ProcessesPlayerInput {
 
         engine.output = playbackSpeed
         
-        try! engine.start()
+        startEngine()
     }
     
     private func buildEffectChain() -> Node {
         reverb = Reverb(player)
-        reverb.dryWetMix = 0.3
+        reverb.dryWetMix = 0
         
         return reverb
+    }
+    
+    private func startEngine() {
+        do {
+            try engine.start()
+        } catch {
+            print("Failed to start engine: \(error)")
+        }
     }
 
     func start() {
         player.play()
-        
     }
     
     func stop() {
