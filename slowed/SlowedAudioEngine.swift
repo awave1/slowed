@@ -9,7 +9,12 @@ import AudioKit
 import AVFoundation
 import SwiftUI
 
-class SlowedAudioEngine: ProcessesPlayerInput {
+struct SlowedAudioEngineData{
+    var playbackSpeed: AUValue = 0.9
+    var reverbDryWetMix: AUValue = 0.3
+}
+
+class SlowedAudioEngine: ObservableObject, ProcessesPlayerInput {
     var player: AudioPlayer
     
     var engine: AudioEngine!;
@@ -22,16 +27,19 @@ class SlowedAudioEngine: ProcessesPlayerInput {
         player = AudioPlayer()
         
         playbackSpeed = VariSpeed(buildEffectChain())
-        playbackSpeed.rate = 0.9
+        playbackSpeed.rate = data.playbackSpeed
 
         engine.output = playbackSpeed
         
         startEngine()
+        
+//        player.duration
+        
     }
     
     private func buildEffectChain() -> Node {
         reverb = Reverb(player)
-        reverb.dryWetMix = 0.3
+        reverb.dryWetMix = data.reverbDryWetMix
         
         return reverb
     }
@@ -65,6 +73,13 @@ class SlowedAudioEngine: ProcessesPlayerInput {
             player.schedule(at: nil)
         } else {
             print("path is nil")
+        }
+    }
+    
+    @Published var data = SlowedAudioEngineData() {
+        didSet {
+            playbackSpeed.rate = data.playbackSpeed
+            reverb.dryWetMix = data.reverbDryWetMix
         }
     }
 }

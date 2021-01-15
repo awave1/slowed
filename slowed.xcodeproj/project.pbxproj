@@ -86,6 +86,7 @@
 		2974495F25B1153300A3D5A6 /* components */ = {
 			isa = PBXGroup;
 			children = (
+				293FD8BC25AFCB4700D7A8D3 /* PlayerControls.swift */,
 				2974496025B1154200A3D5A6 /* ChooseFileButton.swift */,
 				2974496825B1203500A3D5A6 /* NeuorphicButtonStyle.swift */,
 			);
@@ -123,7 +124,6 @@
 				29F779FD25AF8C9F00A50781 /* slowed.entitlements */,
 				29F779F925AF8C9F00A50781 /* Preview Content */,
 				291B121425AF98ED001C5C30 /* SlowedAudioEngine.swift */,
-				293FD8BC25AFCB4700D7A8D3 /* PlayerControls.swift */,
 			);
 			path = slowed;
 			sourceTree = "<group>";

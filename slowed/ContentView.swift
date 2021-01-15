@@ -8,24 +8,45 @@
 import SwiftUI
 import AudioKit
 import AVFoundation
+import MediaPlayer
+
+func getSongName(path: URL) -> String {
+    let item = AVPlayerItem(url: path)
+    let metadata = item.asset.metadata
+    var artist = ""
+    var title = ""
+    
+    for item in metadata {
+        switch item.commonKey {
+        case .commonKeyTitle?:
+            title = item.stringValue ?? ""
+        case .commonKeyArtist?:
+            artist = item.stringValue ?? ""
+        case .none:
+            break
+        default:
+            break
+        }
+    }
+    
+    if (artist.isEmpty && title.isEmpty) {
+        return path.absoluteString
+    } else {
+        return "\(artist) - \(title)"
+    }
+}
 
 struct PlayView: View {
     @State var pathToFile: URL?
-    var conductor: SlowedAudioEngine
-
+    @ObservedObject var conductor: SlowedAudioEngine
+    
     var body: some View {
         VStack {
             VStack(alignment: .center, spacing: nil) {
                 VStack {
-                    if pathToFile != nil {
-                        Text(pathToFile!.absoluteString)
+                    if let pathToFile = pathToFile {
+                        Text(getSongName(path: pathToFile))
                             .font(.title)
-                    } else {
-                        Text("Choose a song")
-                            .font(.title)
-                            .bold()
-                            .italic()
-                            .textCase(.uppercase)
                     }
                 }
             }
@@ -34,7 +55,6 @@ struct PlayView: View {
                 return pathToFile
             })
         }
-        .frame(minWidth: 700, minHeight: 300)
         .padding()
     }
 }
@@ -42,7 +62,7 @@ struct PlayView: View {
 struct ContentView: View {
     @State var pathToFile: URL?
     @State var links: [URL]
-    var conductor = SlowedAudioEngine()
+    @ObservedObject var conductor = SlowedAudioEngine()
     
     var body: some View {
         VStack {
@@ -52,23 +72,24 @@ struct ContentView: View {
                         NavigationLink(
                             destination: PlayView(pathToFile: links[index], conductor: conductor)
                         ) {
-                            Text(links[index].absoluteString)
+                            Text(getSongName(path: links[index]))
                                 .padding(.vertical, 2.0)
                         }
                     }
                     
+                    Spacer()
                     ChooseFileButton(onSelected: { url in
                         DispatchQueue.main.async {
                             links.append(url)
                         }
                     })
                     Spacer()
-                    
                 }
-                .frame(minWidth: 200, maxWidth: 500)
+                .frame(minWidth: 180, idealWidth: 200, maxWidth: 300)
                 .listStyle(SidebarListStyle())
             }
         }
+        .frame(minWidth: 700, minHeight: 300)
     }
 }
 
