@@ -31,7 +31,7 @@ class SlowedAudioEngine: ProcessesPlayerInput {
     
     private func buildEffectChain() -> Node {
         reverb = Reverb(player)
-        reverb.dryWetMix = 0
+        reverb.dryWetMix = 0.3
         
         return reverb
     }

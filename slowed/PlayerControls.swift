@@ -9,23 +9,31 @@ protocol ProcessesPlayerInput {
 struct PlayerControls: View {
     var conductor: ProcessesPlayerInput
 
-    @Environment(\.colorScheme) var colorScheme
     @State var isPlaying = false
 
     var body: some View {
         HStack {
-            Button(action: {
-                self.isPlaying ? self.conductor.player.pause() : self.conductor.player.play()
-                self.isPlaying.toggle()
-            }, label: {
-                Image(systemName: isPlaying ? "stop.fill" : "play.fill" )
+            Button(action: togglePlay, label: {
+                HStack {
+                    Image(systemName: isPlaying ? "pause" : "play.fill")
+                        .font(.title2)
+                    
+                    Text(isPlaying ? "Pause" : "Play")
+                        .font(.title2)
+                }
             })
-            .padding()
-            .background(isPlaying ? Color.red : Color.green)
-            .foregroundColor(.white)
-            .font(.system(size: 14, weight: .semibold, design: .rounded))
-            .cornerRadius(20.0)
+            .buttonStyle(NeumorphicButtonStyle(bgColor: isPlaying ? Color.red : Color.green, cornerRadius: 40))
         }
-        .padding(.vertical, 15)
+    }
+    
+    private func togglePlay() {
+        guard self.conductor.player.file != nil else {
+            print("Please load the file first")
+            // TODO: show snackbar or something
+            return
+        }
+        
+        self.isPlaying ? self.conductor.player.pause() : self.conductor.player.play()
+        self.isPlaying.toggle()
     }
 }

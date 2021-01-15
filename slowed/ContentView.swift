@@ -16,41 +16,36 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            VStack {
-                if pathToFile != nil {
-                    Text("loaded: \(pathToFile!.absoluteString)")
-                } else {
-                    Text("load file")
-                }
-            }
-                
-            Button("Choose file") {
-                let dialog = NSOpenPanel()
-                dialog.title = "Choose a file"
-                dialog.canChooseFiles = true
-                dialog.canChooseDirectories = false
-                dialog.showsHiddenFiles = false
-                
-                let status = dialog.runModal()
-                if (status != NSApplication.ModalResponse.OK) {
-                    return
+            VStack(alignment: .center, spacing: nil) {
+                VStack {
+                    if pathToFile != nil {
+                        Text(pathToFile!.absoluteString)
+                            .font(.title)
+                    } else {
+                        Text("Choose a song")
+                            .font(.title)
+                            .bold()
+                            .italic()
+                            .textCase(.uppercase)
+                    }
                 }
                 
-                let result = dialog.url
-                if let url = result?.absoluteURL {
+                ChooseFileButton(onSelected: { url in
                     pathToFile = url
                     conductor.load(path: url)
-                }
+                })
             }
             
             PlayerControls(conductor: conductor)
         }
+        .frame(minWidth: 700, minHeight: 300)
+        .padding()
+
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .frame(width: 500, height: 500, alignment: .center)
     }
 }
