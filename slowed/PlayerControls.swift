@@ -4,10 +4,13 @@ import SwiftUI
 
 protocol ProcessesPlayerInput {
     var player: AudioPlayer { get }
+    
+    func load(path: URL?)
 }
 
 struct PlayerControls: View {
     var conductor: ProcessesPlayerInput
+    var withSong: (() -> URL?)
 
     @State var isPlaying = false
 
@@ -23,6 +26,8 @@ struct PlayerControls: View {
                 }
             })
             .buttonStyle(NeumorphicButtonStyle(bgColor: isPlaying ? Color.red : Color.green, cornerRadius: 40))
+        }.onAppear {
+            conductor.load(path: withSong())
         }
     }
     

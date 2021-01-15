@@ -53,14 +53,18 @@ class SlowedAudioEngine: ProcessesPlayerInput {
         engine.stop()
     }
     
-    func load(path: URL) {
-        player.stop()
-        print("file loaded: \(path)")
-        
-        let url = path
-        let file = try! AVAudioFile(forReading: url)
+    func load(path: URL?) {
+        if let path = path {
+            print("loading: \(path)")
+            player.stop()
+            
+            let url = path
+            let file = try! AVAudioFile(forReading: url)
 
-        player.file = file
-        player.schedule(at: nil)
+            player.file = file
+            player.schedule(at: nil)
+        } else {
+            print("path is nil")
+        }
     }
 }
