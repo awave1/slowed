@@ -9,11 +9,8 @@ import SwiftUI
 import AudioKit
 import AVFoundation
 
-var listItems = ["Item 1", "Item 2", "Item 3", "Item 4"]
-
 struct PlayView: View {
     @State var pathToFile: URL?
-//    var pathToFile: URL?
     var conductor: SlowedAudioEngine
 
     var body: some View {
@@ -31,11 +28,6 @@ struct PlayView: View {
                             .textCase(.uppercase)
                     }
                 }
-                
-//                ChooseFileButton(onSelected: { url in
-//                    pathToFile = url
-//                    conductor.load(path: url)
-//                })
             }
             
             PlayerControls(conductor: conductor, withSong: {
@@ -62,7 +54,7 @@ struct ContentView: View {
                         ) {
                             Text(links[index].absoluteString)
                                 .padding(.vertical, 2.0)
-                        }.frame(width: .infinity)
+                        }
                     }
                     
                     ChooseFileButton(onSelected: { url in
@@ -73,7 +65,7 @@ struct ContentView: View {
                     Spacer()
                     
                 }
-                .frame(width: 200)
+                .frame(minWidth: 200, maxWidth: 500)
                 .listStyle(SidebarListStyle())
             }
         }
