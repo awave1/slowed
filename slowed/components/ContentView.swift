@@ -6,9 +6,6 @@
 //
 
 import SwiftUI
-import AudioKit
-import AVFoundation
-import MediaPlayer
 
 struct ContentView: View {
     @State var pathToFile: URL?
