@@ -1,11 +1,8 @@
 <!-- PROJECT LOGO -->
-<br />
+<!-- <br /> -->
 <p align="center">
-  <a href="https://github.com/awave1/slowed">
-    <img src="assets/logo.png" alt="Logo" width="250" height="250">
-  </a>
 
-  <h3 align="center">slowed</h3>
+  <h1 align="center">slowed</h1>
 
   <p align="center">
     <br />
@@ -17,7 +14,9 @@
   </p>
 </p>
 
-## About The Project
+<a href="https://github.com/awave1/slowed">
+    <img align="right" src="assets/logo.png" alt="Logo" width="250" height="250">
+</a>
 
 "slowed" is a simple audio player that plays songs with slowed & reverb effect. This style is heavily based on [Chopped and Screwed](https://en.wikipedia.org/wiki/Chopped_and_screwed) genre of Hip-Hop. Some examples of slowed & reverb remixes:
 
@@ -25,7 +24,7 @@
 - [Don Toliver- No idea (s l o w e d + r e v e r b)](https://youtu.be/7g1w53qxNzM)
 - ...and many more others
 
-<!-- GETTING STARTED -->
+<br />
 
 ## Development
 
