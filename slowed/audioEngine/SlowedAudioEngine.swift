@@ -32,9 +32,6 @@ class SlowedAudioEngine: ObservableObject, ProcessesPlayerInput {
         engine.output = playbackSpeed
         
         startEngine()
-        
-//        player.duration
-        
     }
     
     private func buildEffectChain() -> Node {

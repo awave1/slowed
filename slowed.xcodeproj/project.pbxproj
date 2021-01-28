@@ -14,6 +14,7 @@
 		2974496925B1203500A3D5A6 /* NeuorphicButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974496825B1203500A3D5A6 /* NeuorphicButtonStyle.swift */; };
 		2998E32D25C21F0C00428C7E /* PlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2998E32C25C21F0C00428C7E /* PlayView.swift */; };
 		2998E33625C2205900428C7E /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2998E33525C2205900428C7E /* utils.swift */; };
+		2998E33B25C23A8500428C7E /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2998E33A25C23A8500428C7E /* PlayerController.swift */; };
 		29F779F425AF8C9F00A50781 /* slowedApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F779F325AF8C9F00A50781 /* slowedApp.swift */; };
 		29F779F625AF8C9F00A50781 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F779F525AF8C9F00A50781 /* ContentView.swift */; };
 		29F779F825AF8C9F00A50781 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29F779F725AF8C9F00A50781 /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 		2974496825B1203500A3D5A6 /* NeuorphicButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuorphicButtonStyle.swift; sourceTree = "<group>"; };
 		2998E32C25C21F0C00428C7E /* PlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayView.swift; sourceTree = "<group>"; };
 		2998E33525C2205900428C7E /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
+		2998E33A25C23A8500428C7E /* PlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerController.swift; sourceTree = "<group>"; };
 		29F779F025AF8C9F00A50781 /* slowed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = slowed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29F779F325AF8C9F00A50781 /* slowedApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = slowedApp.swift; sourceTree = "<group>"; };
 		29F779F525AF8C9F00A50781 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				29F779FC25AF8C9F00A50781 /* Info.plist */,
 				29F779FD25AF8C9F00A50781 /* slowed.entitlements */,
 				29F779F925AF8C9F00A50781 /* Preview Content */,
+				2998E33A25C23A8500428C7E /* PlayerController.swift */,
 			);
 			path = slowed;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 			files = (
 				293FD8BD25AFCB4700D7A8D3 /* PlayerControls.swift in Sources */,
 				2974496125B1154200A3D5A6 /* ChooseFileButton.swift in Sources */,
+				2998E33B25C23A8500428C7E /* PlayerController.swift in Sources */,
 				29F779F625AF8C9F00A50781 /* ContentView.swift in Sources */,
 				2998E32D25C21F0C00428C7E /* PlayView.swift in Sources */,
 				2974496925B1203500A3D5A6 /* NeuorphicButtonStyle.swift in Sources */,

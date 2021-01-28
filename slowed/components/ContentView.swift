@@ -9,26 +9,35 @@ import SwiftUI
 
 struct ContentView: View {
     @State var pathToFile: URL?
-    @State var links: [URL]
+    @State var selection: Int? = 0
+
     @ObservedObject var conductor = SlowedAudioEngine()
+    @ObservedObject var playerController = PlayerController.instance
     
     var body: some View {
         VStack {
             NavigationView {
                 List {
-                    ForEach((0..<links.count), id: \.self) { index in
+                    ForEach((0..<playerController.files.count), id: \.self) { index in
+                        let file = playerController.files[index]
                         NavigationLink(
-                            destination: PlayView(pathToFile: links[index], conductor: conductor)
+                            destination: PlayView(
+                                pathToFile: file,
+                                conductor: conductor,
+                                index: index,
+                                selection: $selection
+                            ),
+                            tag: index,
+                            selection: $selection
                         ) {
-                            Text(getSongName(path: links[index]))
+                            Text(getSongName(path: file))
                                 .padding(.vertical, 2.0)
                         }
                     }
-                    
-                    Spacer()
+
                     ChooseFileButton(onSelected: { url in
                         DispatchQueue.main.async {
-                            links.append(url)
+                            self.playerController.appendFile(link: url)
                         }
                     })
                     Spacer()
@@ -43,6 +52,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(links: [])
+        ContentView()
     }
 }
