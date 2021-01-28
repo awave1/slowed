@@ -18,30 +18,34 @@ struct PlayerControls: View {
     var body: some View {
         VStack {
             HStack {
-                Button(action: {
+                Button(action: {}, label: {
+                    Image(systemName: "backward.fill")
+                        .font(.title2)
                     
-                }, label: {
-                    Text("Prev")
                 })
+                .buttonStyle(
+                    NeumorphicButtonStyle(bgColor: Color.init(CGColor.init(red: 0, green: 0, blue: 0, alpha: 0)), circle: true)
+                )
 
                 Button(action: togglePlay, label: {
-                    HStack {
-                        Image(systemName: isPlaying ? "pause" : "play.fill")
-                            .font(.title2)
-                        
-                        Text(isPlaying ? "Pause" : "Play")
-                            .font(.title2)
-                    }
+                    Image(systemName: isPlaying ? "pause" : "play.fill")
+                        .font(.title2)
+                    
                 })
-                .buttonStyle(NeumorphicButtonStyle(bgColor: isPlaying ? Color.red : Color.green, cornerRadius: 40))
+                .buttonStyle(
+                    NeumorphicButtonStyle(bgColor: isPlaying ? Color.red : Color.green, circle: true)
+                )
                 
                 Button(action: {}, label: {
-                    Text("Next")
+                    Image(systemName: "forward.fill")
+                        .font(.title2)
+                    
                 })
+                .buttonStyle(
+                    NeumorphicButtonStyle(bgColor: Color.init(CGColor.init(red: 0, green: 0, blue: 0, alpha: 0)), circle: true)
+                )
             }.padding()
 
-            
-            
             
             VStack {
                 HStack {
@@ -66,11 +70,16 @@ struct PlayerControls: View {
     private func togglePlay() {
         guard self.conductor.player.file != nil else {
             print("Please load the file first")
-            // TODO: show snackbar or something
             return
         }
         
         self.isPlaying ? self.conductor.player.pause() : self.conductor.player.play()
         self.isPlaying.toggle()
+    }
+}
+
+struct PlayerControls_preview: PreviewProvider {
+    static var previews: some View {
+        PlayerControls(conductor: SlowedAudioEngine(), withSong: { nil })
     }
 }

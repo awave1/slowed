@@ -33,3 +33,9 @@ struct PlayView: View {
         .padding()
     }
 }
+
+struct PlayView_preview: PreviewProvider {
+    static var previews: some View {
+        PlayView(pathToFile: nil, conductor: SlowedAudioEngine())
+    }
+}
