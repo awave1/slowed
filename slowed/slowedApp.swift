@@ -39,7 +39,10 @@ struct slowedApp: App {
         WindowGroup {
             ContentView()
                 .frame(minWidth: 700, minHeight: 300)
-                .background(fromHex(hex: "#232946") ?? Color.black)
+        }
+        .commands {
+            // Commands go here
+            SidebarCommands()
         }
     }
 }

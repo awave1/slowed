@@ -33,8 +33,12 @@ struct ContentView: View {
                                 .scaledToFit()
                             
                             Text(getSongName(path: file))
+                                .bold()
                                 .padding(.vertical, 2.0)
-                        }.padding(4.0)
+                                .foregroundColor(.primary)
+                                .lineLimit(2)
+                        }
+                        .padding(4)
                     }
                 }
 
@@ -42,12 +46,26 @@ struct ContentView: View {
                     DispatchQueue.main.async {
                         self.playerController.appendFile(link: url)
                     }
-                })
-                Spacer()
+                })                
             }
-            .frame(minWidth: 180, idealWidth: 200, maxWidth: 300)
+            .toolbar {
+                #if os(macOS)
+                ToolbarItem {
+                    Button(action: {
+                        NSApp.keyWindow?.firstResponder?.tryToPerform(
+                            #selector(NSSplitViewController.toggleSidebar(_:)),
+                            with: nil
+                        )
+                    }) {
+                        Image(systemName: "sidebar.squares.left")
+                    }
+                }
+                #endif
+            }
+            .listRowInsets(EdgeInsets())
+            .frame(minWidth: 300)
             .listStyle(SidebarListStyle())
-        }.edgesIgnoringSafeArea(.all).navigationViewStyle(DoubleColumnNavigationViewStyle())
+        }
     }
 }
 
