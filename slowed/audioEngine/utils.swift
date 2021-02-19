@@ -15,7 +15,7 @@ func getSongName(path: URL) -> String {
     let metadata = item.asset.metadata
     var artist = ""
     var title = ""
-    
+
     for item in metadata {
         switch item.commonKey {
         case .commonKeyTitle?:
@@ -28,8 +28,8 @@ func getSongName(path: URL) -> String {
             break
         }
     }
-    
-    if (artist.isEmpty && title.isEmpty) {
+
+    if artist.isEmpty && title.isEmpty {
         return path.lastPathComponent
     } else {
         return "\(artist) - \(title)"

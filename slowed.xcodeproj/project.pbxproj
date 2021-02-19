@@ -16,6 +16,8 @@
 		2998E32D25C21F0C00428C7E /* PlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2998E32C25C21F0C00428C7E /* PlayView.swift */; };
 		2998E33625C2205900428C7E /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2998E33525C2205900428C7E /* utils.swift */; };
 		2998E33B25C23A8500428C7E /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2998E33A25C23A8500428C7E /* PlayerController.swift */; };
+		29D1617325E02A5F008A4940 /* SongListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D1617225E02A5F008A4940 /* SongListItem.swift */; };
+		29D1617E25E02CA3008A4940 /* SongList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D1617D25E02CA3008A4940 /* SongList.swift */; };
 		29F779F425AF8C9F00A50781 /* slowedApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F779F325AF8C9F00A50781 /* slowedApp.swift */; };
 		29F779F625AF8C9F00A50781 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F779F525AF8C9F00A50781 /* ContentView.swift */; };
 		29F779F825AF8C9F00A50781 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29F779F725AF8C9F00A50781 /* Assets.xcassets */; };
@@ -50,6 +52,8 @@
 		2998E32C25C21F0C00428C7E /* PlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayView.swift; sourceTree = "<group>"; };
 		2998E33525C2205900428C7E /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
 		2998E33A25C23A8500428C7E /* PlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerController.swift; sourceTree = "<group>"; };
+		29D1617225E02A5F008A4940 /* SongListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListItem.swift; sourceTree = "<group>"; };
+		29D1617D25E02CA3008A4940 /* SongList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongList.swift; sourceTree = "<group>"; };
 		29F779F025AF8C9F00A50781 /* slowed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = slowed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29F779F325AF8C9F00A50781 /* slowedApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = slowedApp.swift; sourceTree = "<group>"; };
 		29F779F525AF8C9F00A50781 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -102,9 +106,9 @@
 		2974495F25B1153300A3D5A6 /* components */ = {
 			isa = PBXGroup;
 			children = (
+				29D1617125E02A52008A4940 /* SongList */,
 				29F779F525AF8C9F00A50781 /* ContentView.swift */,
 				293FD8BC25AFCB4700D7A8D3 /* PlayerControls.swift */,
-				2974496025B1154200A3D5A6 /* ChooseFileButton.swift */,
 				2974496825B1203500A3D5A6 /* NeuorphicButtonStyle.swift */,
 				2998E32C25C21F0C00428C7E /* PlayView.swift */,
 			);
@@ -118,6 +122,16 @@
 				2998E33525C2205900428C7E /* utils.swift */,
 			);
 			path = audioEngine;
+			sourceTree = "<group>";
+		};
+		29D1617125E02A52008A4940 /* SongList */ = {
+			isa = PBXGroup;
+			children = (
+				2974496025B1154200A3D5A6 /* ChooseFileButton.swift */,
+				29D1617225E02A5F008A4940 /* SongListItem.swift */,
+				29D1617D25E02CA3008A4940 /* SongList.swift */,
+			);
+			path = SongList;
 			sourceTree = "<group>";
 		};
 		29F779E725AF8C9E00A50781 = {
@@ -192,6 +206,7 @@
 				29F779EC25AF8C9E00A50781 /* Sources */,
 				29F779ED25AF8C9E00A50781 /* Frameworks */,
 				29F779EE25AF8C9E00A50781 /* Resources */,
+				29D1618225E02E18008A4940 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -312,12 +327,34 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		29D1618225E02E18008A4940 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\n  swiftlint autocorrect\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		29F779EC25AF8C9E00A50781 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29D1617E25E02CA3008A4940 /* SongList.swift in Sources */,
 				293FD8BD25AFCB4700D7A8D3 /* PlayerControls.swift in Sources */,
+				29D1617325E02A5F008A4940 /* SongListItem.swift in Sources */,
 				2974496125B1154200A3D5A6 /* ChooseFileButton.swift in Sources */,
 				2998E33B25C23A8500428C7E /* PlayerController.swift in Sources */,
 				29F779F625AF8C9F00A50781 /* ContentView.swift in Sources */,
