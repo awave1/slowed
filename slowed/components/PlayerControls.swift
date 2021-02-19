@@ -9,13 +9,13 @@ protocol ProcessesPlayerInput {
 }
 
 struct PlayerControls: View {
-    @State var isPlaying = false
     @State var playbackSpeed = 0.9
 
     @Binding var songPath: URL?
     @Binding var selection: Int?
     var index: Int = 0
     @Binding var displayControls: Bool
+    @Binding var isPlaying: Bool
 
     @ObservedObject var playerController = PlayerController.instance
     @ObservedObject var conductor = SlowedAudioEngine.instance

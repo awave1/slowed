@@ -12,6 +12,7 @@ struct SongList: View {
     @State var pathToFile: URL?
     @State var selection: Int? = 0
     @State var displayControls = false
+    @Binding var isPlaying: Bool
 
     @ObservedObject var playerController = PlayerController.instance
 
@@ -25,7 +26,8 @@ struct SongList: View {
                                 pathToFile: file,
                                 index: index,
                                 selection: $selection,
-                                displayControls: $displayControls
+                                displayControls: $displayControls,
+                                isPlaying: $isPlaying
                             ),
                             tag: index,
                             selection: $selection
