@@ -15,6 +15,7 @@ struct PlayerControls: View {
     @Binding var songPath: URL?
     @Binding var selection: Int?
     var index: Int = 0
+    @Binding var displayControls: Bool
 
     @ObservedObject var playerController = PlayerController.instance
     @ObservedObject var conductor = SlowedAudioEngine.instance
@@ -24,6 +25,7 @@ struct PlayerControls: View {
             HStack {
                 Button(action: {
                     selection = playerController.getPrev(index)
+                    play()
                 }, label: {
                     Image(systemName: index == 0 ? "backward" : "backward.fill")
                         .font(.title2)
@@ -46,6 +48,7 @@ struct PlayerControls: View {
 
                 Button(action: {
                     selection = playerController.getNext(index)
+                    play()
                 }, label: {
                     Image(systemName: index == self.playerController.files.count - 1 ? "forward" : "forward.fill")
                         .font(.title2)
@@ -59,31 +62,33 @@ struct PlayerControls: View {
                 )
             }.padding()
 
-            VStack {
-                HStack {
-                    Text("Playback Speed")
-                    Slider(
-                        value: $conductor.data.playbackSpeed,
-                        in: 0.5...1, step: 0.1,
-                        minimumValueLabel: Text("0.5"),
-                        maximumValueLabel: Text("1")
-                    ) {
-                        EmptyView()
-                    }.padding()
-                }
+            if self.displayControls {
+                VStack {
+                    HStack {
+                        Text("Playback Speed")
+                        Slider(
+                            value: $conductor.data.playbackSpeed,
+                            in: 0.5...1, step: 0.1,
+                            minimumValueLabel: Text("0.5"),
+                            maximumValueLabel: Text("1")
+                        ) {
+                            EmptyView()
+                        }.padding()
+                    }
 
-                HStack {
-                    Text("Reverb")
-                    Slider(
-                        value: $conductor.data.reverbDryWetMix,
-                        in: 0...1,
-                        minimumValueLabel: Text("Dry"),
-                        maximumValueLabel: Text("Wet")
-                    ) {
-                        EmptyView()
-                    }.padding()
-                }
-            }.padding()
+                    HStack {
+                        Text("Reverb")
+                        Slider(
+                            value: $conductor.data.reverbDryWetMix,
+                            in: 0...1,
+                            minimumValueLabel: Text("Dry"),
+                            maximumValueLabel: Text("Wet")
+                        ) {
+                            EmptyView()
+                        }.padding()
+                    }
+                }.padding()
+            }
         }
     }
 
@@ -93,11 +98,19 @@ struct PlayerControls: View {
         }
 
         guard self.conductor.player.file != nil else {
-            print("Please load the file first")
+            print("Please load a file first")
             return
         }
 
         self.isPlaying ? self.conductor.player.pause() : self.conductor.player.play()
         self.isPlaying.toggle()
+    }
+
+    private func play() {
+        if selection != nil && self.isPlaying {
+            conductor.load(path: self.playerController.files[selection!])
+            self.conductor.player.play()
+            self.isPlaying = true
+        }
     }
 }

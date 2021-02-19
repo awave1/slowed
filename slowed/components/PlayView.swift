@@ -16,6 +16,7 @@ struct PlayView: View {
 
     var index: Int = 0
     @Binding var selection: Int?
+    @Binding var displayControls: Bool
 
     var body: some View {
         VStack {
@@ -28,7 +29,12 @@ struct PlayView: View {
                 }
             }
 
-            PlayerControls(songPath: $pathToFile, selection: $selection, index: index)
+            PlayerControls(
+                songPath: $pathToFile,
+                selection: $selection,
+                index: index,
+                displayControls: $displayControls
+            )
         }
         .padding()
     }

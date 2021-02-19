@@ -11,6 +11,7 @@ import SwiftUI
 struct SongList: View {
     @State var pathToFile: URL?
     @State var selection: Int? = 0
+    @State var displayControls = false
 
     @ObservedObject var playerController = PlayerController.instance
 
@@ -23,7 +24,8 @@ struct SongList: View {
                             destination: PlayView(
                                 pathToFile: file,
                                 index: index,
-                                selection: $selection
+                                selection: $selection,
+                                displayControls: $displayControls
                             ),
                             tag: index,
                             selection: $selection
@@ -44,7 +46,7 @@ struct SongList: View {
                 }
                 .toolbar {
                     #if os(macOS)
-                    ToolbarItem {
+                    ToolbarItemGroup {
                         Button(action: {
                             NSApp.keyWindow?.firstResponder?.tryToPerform(
                                 #selector(NSSplitViewController.toggleSidebar(_:)),
@@ -53,6 +55,17 @@ struct SongList: View {
                         }, label: {
                             Image(systemName: "sidebar.squares.left")
                         })
+
+                        Menu {
+                            Toggle(isOn: $displayControls) {
+                                Label("Display controls", systemImage: "star.fill")
+                            }
+                        } label: {
+                            Label("Settings", systemImage: "slider.horizontal.3")
+                        }
+//                        ToolbarItem {
+//
+//                        }
                     }
                     #endif
                 }
