@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0889F24B25D2E54700FBEE6C /* Color+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0889F24A25D2E54700FBEE6C /* Color+init.swift */; };
 		291B121525AF98ED001C5C30 /* SlowedAudioEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291B121425AF98ED001C5C30 /* SlowedAudioEngine.swift */; };
 		291B121B25AF99E0001C5C30 /* AudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 291B121A25AF99E0001C5C30 /* AudioKit */; };
 		293FD8BD25AFCB4700D7A8D3 /* PlayerControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293FD8BC25AFCB4700D7A8D3 /* PlayerControls.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0889F24A25D2E54700FBEE6C /* Color+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+init.swift"; sourceTree = "<group>"; };
 		291B121425AF98ED001C5C30 /* SlowedAudioEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlowedAudioEngine.swift; sourceTree = "<group>"; };
 		293FD8BC25AFCB4700D7A8D3 /* PlayerControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControls.swift; sourceTree = "<group>"; };
 		2974496025B1154200A3D5A6 /* ChooseFileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseFileButton.swift; sourceTree = "<group>"; };
@@ -89,6 +91,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0889F24925D2E53900FBEE6C /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0889F24A25D2E54700FBEE6C /* Color+init.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
 		2974495F25B1153300A3D5A6 /* components */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +143,7 @@
 		29F779F225AF8C9F00A50781 /* slowed */ = {
 			isa = PBXGroup;
 			children = (
+				0889F24925D2E53900FBEE6C /* extensions */,
 				2998E33125C21F5A00428C7E /* audioEngine */,
 				2974495F25B1153300A3D5A6 /* components */,
 				29F779F325AF8C9F00A50781 /* slowedApp.swift */,
@@ -315,6 +326,7 @@
 				291B121525AF98ED001C5C30 /* SlowedAudioEngine.swift in Sources */,
 				29F779F425AF8C9F00A50781 /* slowedApp.swift in Sources */,
 				2998E33625C2205900428C7E /* utils.swift in Sources */,
+				0889F24B25D2E54700FBEE6C /* Color+init.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

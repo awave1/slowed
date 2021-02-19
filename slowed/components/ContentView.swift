@@ -11,42 +11,43 @@ struct ContentView: View {
     @State var pathToFile: URL?
     @State var selection: Int? = 0
 
-    @ObservedObject var conductor = SlowedAudioEngine()
     @ObservedObject var playerController = PlayerController.instance
     
     var body: some View {
-        VStack {
-            NavigationView {
-                List {
-                    ForEach((0..<playerController.files.count), id: \.self) { index in
-                        let file = playerController.files[index]
-                        NavigationLink(
-                            destination: PlayView(
-                                pathToFile: file,
-                                conductor: conductor,
-                                index: index,
-                                selection: $selection
-                            ),
-                            tag: index,
+        NavigationView {
+            List {
+                ForEach((0..<playerController.files.count), id: \.self) { index in
+                    let file = playerController.files[index]
+                    NavigationLink(
+                        destination: PlayView(
+                            pathToFile: file,
+                            index: index,
                             selection: $selection
-                        ) {
+                        ),
+                        tag: index,
+                        selection: $selection
+                    ) {
+                        HStack {
+                            Image(systemName: "person.circle.fill")
+                                .font(.system(size: 24))
+                                .scaledToFit()
+                            
                             Text(getSongName(path: file))
                                 .padding(.vertical, 2.0)
-                        }
+                        }.padding(4.0)
                     }
-
-                    ChooseFileButton(onSelected: { url in
-                        DispatchQueue.main.async {
-                            self.playerController.appendFile(link: url)
-                        }
-                    })
-                    Spacer()
                 }
-                .frame(minWidth: 180, idealWidth: 200, maxWidth: 300)
-                .listStyle(SidebarListStyle())
+
+                ChooseFileButton(onSelected: { url in
+                    DispatchQueue.main.async {
+                        self.playerController.appendFile(link: url)
+                    }
+                })
+                Spacer()
             }
-        }
-        .frame(minWidth: 700, minHeight: 300)
+            .frame(minWidth: 180, idealWidth: 200, maxWidth: 300)
+            .listStyle(SidebarListStyle())
+        }.edgesIgnoringSafeArea(.all).navigationViewStyle(DoubleColumnNavigationViewStyle())
     }
 }
 

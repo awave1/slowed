@@ -22,7 +22,9 @@ class SlowedAudioEngine: ObservableObject, ProcessesPlayerInput {
     var playbackSpeed: VariSpeed!
     var fileUrl: URL?;
     
-    init() {
+    static var instance = SlowedAudioEngine()
+    
+    private init() {
         engine = AudioEngine()
         player = AudioPlayer()
         

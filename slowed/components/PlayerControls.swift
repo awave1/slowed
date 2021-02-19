@@ -9,15 +9,15 @@ protocol ProcessesPlayerInput {
 }
 
 struct PlayerControls: View {
-    @ObservedObject var conductor: SlowedAudioEngine
-    @Binding var songPath: URL?
-    var index: Int = 0
-    @Binding var selection: Int?
-    
-    @ObservedObject var playerController = PlayerController.instance
-
     @State var isPlaying = false
     @State var playbackSpeed = 0.9;
+    
+    @Binding var songPath: URL?
+    @Binding var selection: Int?
+    var index: Int = 0
+    
+    @ObservedObject var playerController = PlayerController.instance
+    @ObservedObject var conductor = SlowedAudioEngine.instance
 
     var body: some View {
         VStack {
@@ -86,9 +86,3 @@ struct PlayerControls: View {
         self.isPlaying.toggle()
     }
 }
-
-//struct PlayerControls_preview: PreviewProvider {
-//    static var previews: some View {
-//        PlayerControls(conductor: SlowedAudioEngine(), songPath: nil)
-//    }
-//}

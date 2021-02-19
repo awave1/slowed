@@ -13,8 +13,7 @@ import MediaPlayer
 
 struct PlayView: View {
     @State var pathToFile: URL?
-    @ObservedObject var conductor: SlowedAudioEngine
-    @ObservedObject var playerController = PlayerController.instance
+
     var index: Int = 0
     @Binding var selection: Int?
     
@@ -29,14 +28,8 @@ struct PlayView: View {
                 }
             }
             
-            PlayerControls(conductor: conductor, songPath: $pathToFile, index: index, selection: $selection)
+            PlayerControls(songPath: $pathToFile, selection: $selection, index: index)
         }
         .padding()
     }
 }
-
-//struct PlayView_preview: PreviewProvider {
-//    static var previews: some View {
-//        PlayView(pathToFile: nil, conductor: SlowedAudioEngine(), index: 0)
-//    }
-//}
