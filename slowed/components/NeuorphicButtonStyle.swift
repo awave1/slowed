@@ -12,13 +12,13 @@ struct NeumorphicButtonStyle: ButtonStyle {
     var bgColor: Color
     var cornerRadius: CGFloat = 20
     var circle = false
-    
+
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .padding(20)
             .background(
                 ZStack {
-                    if (!circle) {
+                    if !circle {
                         RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
                             .shadow(
                                 color: .white,

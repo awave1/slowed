@@ -50,9 +50,9 @@ struct SongList: View {
                                 #selector(NSSplitViewController.toggleSidebar(_:)),
                                 with: nil
                             )
-                        }) {
+                        }, label: {
                             Image(systemName: "sidebar.squares.left")
-                        }
+                        })
                     }
                     #endif
                 }

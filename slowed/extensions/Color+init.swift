@@ -24,7 +24,13 @@ func fromHex(hex: String) -> Color? {
                 blue = CGFloat((hexNumber & 0x0000ff00) >> 8) / 255
                 alpha = CGFloat(hexNumber & 0x000000ff) / 255
 
-                return Color.init(.sRGB, red: Double(red), green: Double(green), blue: Double(blue), opacity: Double(alpha))
+                return Color.init(
+                    .sRGB,
+                    red: Double(red),
+                    green: Double(green),
+                    blue: Double(blue),
+                    opacity: Double(alpha)
+                )
             }
         } else if hexColor.count == 6 {
             let scanner = Scanner(string: hexColor)
@@ -40,6 +46,6 @@ func fromHex(hex: String) -> Color? {
             }
         }
     }
-    
+
     return nil
 }

@@ -4,18 +4,18 @@ import SwiftUI
 
 protocol ProcessesPlayerInput {
     var player: AudioPlayer { get }
-    
+
     func load(path: URL?)
 }
 
 struct PlayerControls: View {
     @State var isPlaying = false
-    @State var playbackSpeed = 0.9;
-    
+    @State var playbackSpeed = 0.9
+
     @Binding var songPath: URL?
     @Binding var selection: Int?
     var index: Int = 0
-    
+
     @ObservedObject var playerController = PlayerController.instance
     @ObservedObject var conductor = SlowedAudioEngine.instance
 
@@ -30,7 +30,10 @@ struct PlayerControls: View {
                 })
                 .disabled(index == 0)
                 .buttonStyle(
-                    NeumorphicButtonStyle(bgColor: Color.init(CGColor.init(red: 0, green: 0, blue: 0, alpha: 0)), circle: true)
+                    NeumorphicButtonStyle(
+                        bgColor: Color.init(CGColor.init(red: 0, green: 0, blue: 0, alpha: 0)),
+                        circle: true
+                    )
                 )
 
                 Button(action: togglePlay, label: {
@@ -40,7 +43,7 @@ struct PlayerControls: View {
                 .buttonStyle(
                     NeumorphicButtonStyle(bgColor: isPlaying ? Color.red : Color.green, circle: true)
                 )
-                
+
                 Button(action: {
                     selection = playerController.getNext(index)
                 }, label: {
@@ -49,31 +52,43 @@ struct PlayerControls: View {
                 })
                 .disabled(index == self.playerController.files.count - 1)
                 .buttonStyle(
-                    NeumorphicButtonStyle(bgColor: Color.init(CGColor.init(red: 0, green: 0, blue: 0, alpha: 0)), circle: true)
+                    NeumorphicButtonStyle(
+                        bgColor: Color.init(CGColor.init(red: 0, green: 0, blue: 0, alpha: 0)),
+                        circle: true
+                    )
                 )
             }.padding()
 
-            
             VStack {
                 HStack {
                     Text("Playback Speed")
-                    Slider(value: $conductor.data.playbackSpeed, in: 0.5...1, step: 0.1, minimumValueLabel: Text("0.5"), maximumValueLabel: Text("1")) {
+                    Slider(
+                        value: $conductor.data.playbackSpeed,
+                        in: 0.5...1, step: 0.1,
+                        minimumValueLabel: Text("0.5"),
+                        maximumValueLabel: Text("1")
+                    ) {
                         EmptyView()
                     }.padding()
                 }
-                
+
                 HStack {
                     Text("Reverb")
-                    Slider(value: $conductor.data.reverbDryWetMix, in: 0...1, minimumValueLabel: Text("Dry"), maximumValueLabel: Text("Wet")) {
+                    Slider(
+                        value: $conductor.data.reverbDryWetMix,
+                        in: 0...1,
+                        minimumValueLabel: Text("Dry"),
+                        maximumValueLabel: Text("Wet")
+                    ) {
                         EmptyView()
                     }.padding()
                 }
             }.padding()
         }
     }
-    
+
     private func togglePlay() {
-        if (!self.isPlaying) {
+        if !self.isPlaying {
             conductor.load(path: self.playerController.files[selection ?? 0])
         }
 
