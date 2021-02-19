@@ -8,14 +8,14 @@
 import Foundation
 import SwiftUI
 
-struct BlueButtonStyle: ButtonStyle {
-  func makeBody(configuration: Self.Configuration) -> some View {
-    configuration.label
-        .font(.headline)
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-        .contentShape(Rectangle())
-        .foregroundColor(configuration.isPressed ? Color.white.opacity(0.5) : Color.white)
-  }
+private struct ChooseFileButtonStyle: ButtonStyle {
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .font(.headline)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+            .contentShape(Rectangle())
+            .foregroundColor(configuration.isPressed ? Color.white.opacity(0.5) : Color.white)
+    }
 }
 
 struct ChooseFileButton: View {
@@ -23,19 +23,9 @@ struct ChooseFileButton: View {
     
     var body: some View {
         Button(action: openFilePicker) {
-            HStack {
-                Image(systemName: "plus.square.fill")
-                    .font(.system(size: 24))
-                    .scaledToFit()
-                Spacer()
-                
-                Text("Choose File")
-                
-                Spacer()
-            }
-            .padding(4)
+            SongListItem(label: "Choose File", image: "plus.square.fill")
         }
-        .buttonStyle(BlueButtonStyle())
+        .buttonStyle(ChooseFileButtonStyle())
     }
     
     private func openFilePicker() {
