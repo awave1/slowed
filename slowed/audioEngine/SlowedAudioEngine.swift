@@ -66,7 +66,8 @@ class SlowedAudioEngine: ObservableObject, ProcessesPlayerInput {
             player.stop()
             
             let url = path
-            let file = try! AVAudioFile(forReading: url)
+
+            let file = try? AVAudioFile(forReading: url)
 
             player.file = file
             player.schedule(at: nil)

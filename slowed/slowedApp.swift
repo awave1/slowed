@@ -9,7 +9,7 @@ import SwiftUI
 
 
 @main
-struct slowedApp: App {
+struct SlowedApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
