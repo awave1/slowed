@@ -6,12 +6,10 @@
 //
 
 import Foundation
-import SwiftUI
+import Combine
 
 class PlayerController: ObservableObject {
     @Published var files: [URL]
-    @Published var currentSelection: Int? = 0
-    @Published var currentSong: URL?
 
     static var instance: PlayerController = PlayerController()
 

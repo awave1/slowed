@@ -16,26 +16,13 @@ struct PlayView: View {
 
     var index: Int = 0
     @Binding var selection: Int?
-    @Binding var displayControls: Bool
-    @Binding var isPlaying: Bool
 
     var body: some View {
         VStack {
-            VStack(alignment: .center, spacing: nil) {
-                VStack {
-                    if let pathToFile = pathToFile {
-                        Text(getSongName(path: pathToFile))
-                            .font(.title)
-                    }
-                }
-            }
-
             PlayerControls(
                 songPath: $pathToFile,
                 selection: $selection,
-                index: index,
-                displayControls: $displayControls,
-                isPlaying: $isPlaying
+                index: index
             )
         }
         .padding()

@@ -18,7 +18,9 @@
 		2998E33B25C23A8500428C7E /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2998E33A25C23A8500428C7E /* PlayerController.swift */; };
 		29D1617325E02A5F008A4940 /* SongListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D1617225E02A5F008A4940 /* SongListItem.swift */; };
 		29D1617E25E02CA3008A4940 /* SongList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D1617D25E02CA3008A4940 /* SongList.swift */; };
-		29F779F425AF8C9F00A50781 /* slowedApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F779F325AF8C9F00A50781 /* slowedApp.swift */; };
+		29DBBC4B25E068C200A7B9BA /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBBC4A25E068C200A7B9BA /* AppState.swift */; };
+		29DBBC6225E07B5E00A7B9BA /* PlotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBBC6125E07B5E00A7B9BA /* PlotView.swift */; };
+		29F779F425AF8C9F00A50781 /* SlowedApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F779F325AF8C9F00A50781 /* SlowedApp.swift */; };
 		29F779F625AF8C9F00A50781 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F779F525AF8C9F00A50781 /* ContentView.swift */; };
 		29F779F825AF8C9F00A50781 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29F779F725AF8C9F00A50781 /* Assets.xcassets */; };
 		29F779FB25AF8C9F00A50781 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29F779FA25AF8C9F00A50781 /* Preview Assets.xcassets */; };
@@ -54,8 +56,10 @@
 		2998E33A25C23A8500428C7E /* PlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerController.swift; sourceTree = "<group>"; };
 		29D1617225E02A5F008A4940 /* SongListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListItem.swift; sourceTree = "<group>"; };
 		29D1617D25E02CA3008A4940 /* SongList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongList.swift; sourceTree = "<group>"; };
+		29DBBC4A25E068C200A7B9BA /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		29DBBC6125E07B5E00A7B9BA /* PlotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlotView.swift; sourceTree = "<group>"; };
 		29F779F025AF8C9F00A50781 /* slowed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = slowed.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		29F779F325AF8C9F00A50781 /* slowedApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = slowedApp.swift; sourceTree = "<group>"; };
+		29F779F325AF8C9F00A50781 /* SlowedApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlowedApp.swift; sourceTree = "<group>"; };
 		29F779F525AF8C9F00A50781 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		29F779F725AF8C9F00A50781 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29F779FA25AF8C9F00A50781 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -111,6 +115,7 @@
 				293FD8BC25AFCB4700D7A8D3 /* PlayerControls.swift */,
 				2974496825B1203500A3D5A6 /* NeuorphicButtonStyle.swift */,
 				2998E32C25C21F0C00428C7E /* PlayView.swift */,
+				29DBBC6125E07B5E00A7B9BA /* PlotView.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -132,6 +137,22 @@
 				29D1617D25E02CA3008A4940 /* SongList.swift */,
 			);
 			path = SongList;
+			sourceTree = "<group>";
+		};
+		29DBBC4925E068B400A7B9BA /* models */ = {
+			isa = PBXGroup;
+			children = (
+				29DBBC4A25E068C200A7B9BA /* AppState.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		29DBBC5225E06A3100A7B9BA /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2998E33A25C23A8500428C7E /* PlayerController.swift */,
+			);
+			path = controllers;
 			sourceTree = "<group>";
 		};
 		29F779E725AF8C9E00A50781 = {
@@ -157,15 +178,16 @@
 		29F779F225AF8C9F00A50781 /* slowed */ = {
 			isa = PBXGroup;
 			children = (
-				0889F24925D2E53900FBEE6C /* extensions */,
 				2998E33125C21F5A00428C7E /* audioEngine */,
+				29DBBC5225E06A3100A7B9BA /* controllers */,
 				2974495F25B1153300A3D5A6 /* components */,
-				29F779F325AF8C9F00A50781 /* slowedApp.swift */,
+				0889F24925D2E53900FBEE6C /* extensions */,
+				29DBBC4925E068B400A7B9BA /* models */,
+				29F779F325AF8C9F00A50781 /* SlowedApp.swift */,
 				29F779F725AF8C9F00A50781 /* Assets.xcassets */,
 				29F779FC25AF8C9F00A50781 /* Info.plist */,
 				29F779FD25AF8C9F00A50781 /* slowed.entitlements */,
 				29F779F925AF8C9F00A50781 /* Preview Content */,
-				2998E33A25C23A8500428C7E /* PlayerController.swift */,
 			);
 			path = slowed;
 			sourceTree = "<group>";
@@ -361,7 +383,9 @@
 				2998E32D25C21F0C00428C7E /* PlayView.swift in Sources */,
 				2974496925B1203500A3D5A6 /* NeuorphicButtonStyle.swift in Sources */,
 				291B121525AF98ED001C5C30 /* SlowedAudioEngine.swift in Sources */,
-				29F779F425AF8C9F00A50781 /* slowedApp.swift in Sources */,
+				29DBBC6225E07B5E00A7B9BA /* PlotView.swift in Sources */,
+				29F779F425AF8C9F00A50781 /* SlowedApp.swift in Sources */,
+				29DBBC4B25E068C200A7B9BA /* AppState.swift in Sources */,
 				2998E33625C2205900428C7E /* utils.swift in Sources */,
 				0889F24B25D2E54700FBEE6C /* Color+init.swift in Sources */,
 			);

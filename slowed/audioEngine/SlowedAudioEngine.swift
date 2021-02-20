@@ -21,17 +21,21 @@ class SlowedAudioEngine: ObservableObject, ProcessesPlayerInput {
     var reverb: Reverb!
     var playbackSpeed: VariSpeed!
     var fileUrl: URL?
+    var mixPlot: NodeOutputPlot!
 
-    static var instance = SlowedAudioEngine()
-
-    private init() {
+    init() {
         engine = AudioEngine()
         player = AudioPlayer()
 
         playbackSpeed = VariSpeed(buildEffectChain())
         playbackSpeed.rate = data.playbackSpeed
+        mixPlot = NodeOutputPlot(playbackSpeed)
 
         engine.output = playbackSpeed
+
+        player.completionHandler = {
+            print("TODO: song finished")
+        }
 
         startEngine()
     }
@@ -45,6 +49,7 @@ class SlowedAudioEngine: ObservableObject, ProcessesPlayerInput {
 
     private func startEngine() {
         do {
+            mixPlot.start()
             try engine.start()
         } catch {
             print("Failed to start engine: \(error)")

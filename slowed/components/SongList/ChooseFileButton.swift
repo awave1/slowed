@@ -19,7 +19,7 @@ private struct ChooseFileButtonStyle: ButtonStyle {
 }
 
 struct ChooseFileButton: View {
-    var onSelected: ((_ path: URL) -> Void)
+    @EnvironmentObject var state: AppState
 
     var body: some View {
         Button(action: openFilePicker) {
@@ -42,7 +42,9 @@ struct ChooseFileButton: View {
 
         let result = dialog.url
         if let url = result?.absoluteURL {
-            onSelected(url)
+            DispatchQueue.main.async {
+                self.state.addSong(url)
+            }
         }
     }
 }

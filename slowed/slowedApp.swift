@@ -9,10 +9,12 @@ import SwiftUI
 
 @main
 struct SlowedApp: App {
-    var body: some Scene {
+    var
+        body: some Scene {
         WindowGroup {
             ContentView()
                 .frame(minWidth: 700, minHeight: 300)
+                .environmentObject(AppState())
         }
         .commands {
             // Commands go here
